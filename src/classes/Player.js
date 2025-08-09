@@ -1,9 +1,13 @@
-import { PATH_SPACESHIP_IMAGE } from "../utils/constants.js";
+import {
+    PATH_ENGINE_IMAGE,
+    PATH_ENGINE_SPRITES,
+    PATH_SPACESHIP_IMAGE,
+} from "../utils/constants.js";
 
 class Player {
     constructor(canvasWidth, canvasHeight) {
-        this.width = 48;
-        this.height = 48;
+        this.width = 48 * 2;
+        this.height = 48 * 2;
         this.velocity = 6
 
         this.position = { 
@@ -12,6 +16,8 @@ class Player {
         };
 
         this.image = this.getImage(PATH_SPACESHIP_IMAGE);
+        this.engineImage = this.getImage(PATH_ENGINE_IMAGE);
+        this.engineSprites = this.getImage(PATH_ENGINE_SPRITES);
     }
 
     getImage(path) {
@@ -30,7 +36,22 @@ class Player {
 
 
     draw(ctx) {
-        ctx.drawImage(this.image, this.position.x, this.position.y);
+        ctx.drawImage(
+            this.image,
+            this.position.x,
+            this.position.y,
+            this.width,
+            this.height
+        );
+
+        ctx.drawImage(
+            this.engineImage,
+            this.position.x,
+            this.position.y,
+            this.width,
+            this.height
+        );
+
     }
 }
 
